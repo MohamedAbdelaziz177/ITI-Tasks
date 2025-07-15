@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Form Object Tasks</h2>
+
+    <form id="myForm" onsubmit="handleSubmit(event)">
+        <input type="text" name="firstName" placeholder="First Name" onfocus="this.style.backgroundColor='lightyellow'">
+        <input type="text" name="lastName" placeholder="Last Name" onfocus="this.style.backgroundColor='lightyellow'">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <p id="formOutput"></p>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const output = `First Name: ${form.firstName.value}, Last Name: ${form.lastName.value}`;
+            document.getElementById("formOutput").innerText = output;
+        }
+    </script>
+</body>
+</html>

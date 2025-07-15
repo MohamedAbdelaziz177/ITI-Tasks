@@ -1,0 +1,11 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div>Counter: <span id="counter">0</span></div>
+    <button onclick="{
+        let count = parseInt(document.getElementById('counter').innerText);
+        document.getElementById('counter').innerText = count + 1;
+    }">Increase Counter</button>
+</body>
+</html>

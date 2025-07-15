@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Document Object Tasks</h2>
+
+    <p>Paragraph 1</p>
+    <p id="p2">Paragraph 2</p>
+    <p>Paragraph 3</p>
+
+    <button onclick="document.body.style.backgroundColor = 'lightgrey'">Change Background</button>
+
+    <div id="countResult"></div>
+    <script>
+        document.getElementById("p2").innerText = "Changed on load";
+        const count = document.getElementsByTagName("p").length;
+        document.getElementById("countResult").innerText = "Number of <p> tags: " + count;
+    </script>
+</body>
+</html>

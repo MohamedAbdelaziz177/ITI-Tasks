@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Dropdown List Tasks</h2>
+
+    <select id="fruitSelect" onfocus="this.style.borderColor='orange'">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Cherry</option>
+    </select>
+
+    <br><br>
+    <button onclick="{
+        let val = document.getElementById('fruitSelect').value;
+        document.getElementById('selectedFruit').innerText = 'Selected: ' + val;
+    }">Show Selected Fruit</button>
+
+    <button onclick="{
+        let opt = new Option('Mango');
+        document.getElementById('fruitSelect').add(opt);
+    }">Add Mango</button>
+
+    <p id="selectedFruit"></p>
+</body>
+</html>

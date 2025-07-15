@@ -1,0 +1,10 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div onclick="console.log('DIV clicked')" style="border:1px solid black; padding:10px;">
+        Parent Div
+        <button onclick="console.log('Button clicked'); event.stopPropagation();">Click Me</button>
+    </div>
+</body>
+</html>

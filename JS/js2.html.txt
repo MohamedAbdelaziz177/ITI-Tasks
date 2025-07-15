@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions & Operators</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        .container { max-width: 900px; margin: 20px auto; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #ffffff; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-top: 30px; }
+        h1 { text-align: center; color: #2980b9; }
+        .task-section { margin-bottom: 25px; padding: 15px; background-color: #ecf0f1; border-radius: 8px; border: 1px solid #dcdcdc; }
+        .output { background-color: #e8f4f8; border-left: 5px solid #3498db; padding: 10px 15px; margin-top: 15px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; }
+        button { background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; margin-top: 10px; }
+        button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>مهام JavaScript: الدوال والعمليات</h1>
+
+        <!-- Task 4: Experiment with + operator and typeof -->
+        <div class="task-section">
+            <h2>4. تجربة عامل التشغيل + و typeof</h2>
+            <button onclick="performOperatorAndTypeofTasks()">تشغيل مهام العمليات والأنواع</button>
+            <div id="operatorTypeofOutput" class="output"></div>
+        </div>
+
+        <!-- Task 5: Function Types -->
+        <div class="task-section">
+            <h2>5. أنواع الدوال</h2>
+            <button onclick="performFunctionTypeTasks()">تشغيل مهام أنواع الدوال</button>
+            <div id="functionTypeOutput" class="output"></div>
+        </div>
+
+        <!-- Task 6: Local vs Global Scope and Variable Hoisting -->
+        <div class="task-section">
+            <h2>6. النطاق المحلي مقابل النطاق العام ورفع المتغيرات (Hoisting)</h2>
+            <button onclick="performScopeHoistingTasks()">تشغيل مهام النطاق والرفع</button>
+            <div id="scopeHoistingOutput" class="output"></div>
+        </div>
+
+        <!-- Task 7: Calculate Hypotenuse with Nested Function -->
+        <div class="task-section">
+            <h2>7. حساب الوتر باستخدام دالة متداخلة</h2>
+            <button onclick="calculateHypotenuseTasks()">احسب الأوتار</button>
+            <div id="hypotenuseOutput" class="output"></div>
+        </div>
+
+        <!-- Task 8: sumAll() with arguments object -->
+        <div class="task-section">
+            <h2>8. دالة sumAll() مع كائن arguments</h2>
+            <button onclick="performSumAllTasks()">تشغيل مهام sumAll</button>
+            <div id="sumAllOutput" class="output"></div>
+        </div>
+
+    </div> <!-- End of container -->
+
+    <script>
+        // Helper function to append output to a div
+        function appendOutput(elementId, content) {
+            const outputDiv = document.getElementById(elementId);
+            outputDiv.innerHTML += content + "<br>";
+        }
+
+        // Clear output before running new tasks
+        function clearOutput(elementId) {
+            document.getElementById(elementId).innerHTML = "";
+        }
+
+        // --- Task 4: Experiment with + operator and typeof ---
+        function performOperatorAndTypeofTasks() {
+            clearOutput('operatorTypeofOutput');
+
+            // 4a. Add two numbers.
+            appendOutput('operatorTypeofOutput', `<h2>جمع رقمين:</h2>`);
+            const numA = 10;
+            const numB = 20;
+            appendOutput('operatorTypeofOutput', `${numA} + ${numB} = <strong>${numA + numB}</strong>`);
+
+            // 4b. Concatenate two strings.
+            appendOutput('operatorTypeofOutput', `<h2>دمج سلسلتين نصيتين:</h2>`);
+            const strA = "مرحباً يا";
+            const strB = " JavaScript!";
+            appendOutput('operatorTypeofOutput', `"${strA}" + "${strB}" = <strong>"${strA + strB}"</strong>`);
+
+            // 4c. Add a number and a string, and observe the result.
+            appendOutput('operatorTypeofOutput', `<h2>جمع رقم وسلسلة نصية:</h2>`);
+            const numC = 123;
+            const strC = " عنصر";
+            appendOutput('operatorTypeofOutput', `${numC} + "${strC}" = <strong>"${numC + strC}"</strong>`);
+            appendOutput('operatorTypeofOutput', `<em>ملاحظة: عند جمع رقم وسلسلة نصية، يتم تحويل الرقم ضمنيًا إلى سلسلة نصية، ثم يتم الدمج.</em>`);
+
+            // 4d. Use typeof to display the type of various variables.
+            appendOutput('operatorTypeofOutput', `<h2>استخدام typeof لعرض أنواع المتغيرات:</h2>`);
+            const myNumber = 42;
+            const myString = "جافاسكريبت";
+            const myBoolean = true;
+            const myObject = { name: "أليس" };
+            const myArray = [1, 2, 3]; // المصفوفات هي كائنات في JavaScript
+            const myFunction = function() {};
+            const myNull = null; // حالة خاصة: نوع null هو "object" (خطأ تاريخي)
+            let myUndefined;
+
+            appendOutput('operatorTypeofOutput', `نوع ${myNumber} (رقم): <strong>${typeof myNumber}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع "${myString}" (سلسلة نصية): <strong>${typeof myString}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع ${myBoolean} (منطقي): <strong>${typeof myBoolean}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع { name: "أليس" } (كائن): <strong>${typeof myObject}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع [1, 2, 3] (مصفوفة): <strong>${typeof myArray}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع function() {} (دالة): <strong>${typeof myFunction}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع null: <strong>${typeof myNull}</strong>`);
+            appendOutput('operatorTypeofOutput', `نوع undefined: <strong>${typeof myUndefined}</strong>`);
+
+            // 3.a. Converts a numeric string to a number using Number(), parseInt(), and parseFloat(), showing the difference.
+            appendOutput('operatorTypeofOutput', `<h2>تحويل السلاسل الرقمية إلى أرقام:</h2>`);
+            const numStr1 = "123";
+            const numStr2 = "123.45";
+            const numStr3 = "123px";
+            const numStr4 = "abc123";
+
+            appendOutput('operatorTypeofOutput', `السلسلة: "${numStr1}"`);
+            appendOutput('operatorTypeofOutput', `  Number("${numStr1}"): <strong>${Number(numStr1)}</strong>`);
+            appendOutput('operatorTypeofOutput', `  parseInt("${numStr1}"): <strong>${parseInt(numStr1)}</strong>`);
+            appendOutput('operatorTypeofOutput', `  parseFloat("${numStr1}"): <strong>${parseFloat(numStr1)}</strong>`);
+
+            appendOutput('operatorTypeofOutput', `السلسلة: "${numStr2}"`);
+            appendOutput('operatorTypeofOutput', `  Number("${numStr2}"): <strong>${Number(numStr2)}</strong>`);
+            appendOutput('operatorTypeofOutput', `  parseInt("${numStr2}"): <strong>${parseInt(numStr2)}</strong>`); // يحلل الجزء الصحيح فقط
+            appendOutput('operatorTypeofOutput', `  parseFloat("${numStr2}"): <strong>${parseFloat(numStr2)}</strong>`);
+
+            appendOutput('operatorTypeofOutput', `السلسلة: "${numStr3}"`);
+            appendOutput('operatorTypeofOutput', `  Number("${numStr3}"): <strong>${Number(numStr3)}</strong>`); // NaN
+            appendOutput('operatorTypeofOutput', `  parseInt("${numStr3}"): <strong>${parseInt(numStr3)}</strong>`); // يحلل الرقم الصحيح الرائد
+            appendOutput('operatorTypeofOutput', `  parseFloat("${numStr3}"): <strong>${parseFloat(numStr3)}</strong>`); // يحلل الرقم العشري الرائد
+
+            appendOutput('operatorTypeofOutput', `السلسلة: "${numStr4}"`);
+            appendOutput('operatorTypeofOutput', `  Number("${numStr4}"): <strong>${Number(numStr4)}</strong>`); // NaN
+            appendOutput('operatorTypeofOutput', `  parseInt("${numStr4}"): <strong>${parseInt(numStr4)}</strong>`); // NaN
+            appendOutput('operatorTypeofOutput', `  parseFloat("${numStr4}"): <strong>${parseFloat(numStr4)}</strong>`); // NaN
+
+            // 3.b. Uses Number.isNaN() and Number.isFinite() to check different values.
+            appendOutput('operatorTypeofOutput', `<h2>Number.isNaN() و Number.isFinite():</h2>`);
+            appendOutput('operatorTypeofOutput', `Number.isNaN(NaN): <strong>${Number.isNaN(NaN)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isNaN(0 / 0): <strong>${Number.isNaN(0 / 0)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isNaN("مرحباً"): <strong>${Number.isNaN("مرحباً")}</strong> (ملاحظة: isNaN("مرحباً") ستكون true)`);
+            appendOutput('operatorTypeofOutput', `Number.isNaN(123): <strong>${Number.isNaN(123)}</strong>`);
+
+            appendOutput('operatorTypeofOutput', `Number.isFinite(100): <strong>${Number.isFinite(100)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isFinite(Infinity): <strong>${Number.isFinite(Infinity)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isFinite(-Infinity): <strong>${Number.isFinite(-Infinity)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isFinite(NaN): <strong>${Number.isFinite(NaN)}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.isFinite("123"): <strong>${Number.isFinite("123")}</strong> (ملاحظة: isFinite("123") ستكون true)`);
+
+            // 3.c. Prints out Number.MAX_VALUE, Number.MIN_VALUE, and Number.EPSILON.
+            appendOutput('operatorTypeofOutput', `<h2>ثوابت الأرقام الخاصة:</h2>`);
+            appendOutput('operatorTypeofOutput', `Number.MAX_VALUE: <strong>${Number.MAX_VALUE}</strong>`);
+            appendOutput('operatorTypeofOutput', `Number.MIN_VALUE: <strong>${Number.MIN_VALUE}</strong> (أصغر رقم موجب قريب من 0)`);
+            appendOutput('operatorTypeofOutput', `Number.EPSILON: <strong>${Number.EPSILON}</strong> (أصغر فرق بين 1 والرقم العشري التالي)`);
+        }
+
+
+        // --- Task 5: Function Types ---
+        function performFunctionTypeTasks() {
+            clearOutput('functionTypeOutput');
+
+            // 5a. A named function that takes two numbers and returns their sum.
+            function add(a, b) {
+                return a + b;
+            }
+            appendOutput('functionTypeOutput', `<h2>دالة مسماة:</h2>`);
+            appendOutput('functionTypeOutput', `دالة 'add(5, 3)': <strong>${add(5, 3)}</strong>`);
+
+            // 5b. An anonymous function assigned to a variable that multiplies two numbers.
+            const multiply = function(a, b) {
+                return a * b;
+            };
+            appendOutput('functionTypeOutput', `<h2>دالة مجهولة:</h2>`);
+            appendOutput('functionTypeofOutput', `دالة 'multiply(6, 4)': <strong>${multiply(6, 4)}</strong>`);
+
+            // 5c. A function with default parameters (e.g., a greeting function with a default name of “Guest”).
+            function greet(name = "ضيف") {
+                return `مرحباً، ${name}!`;
+            }
+            appendOutput('functionTypeOutput', `<h2>دالة بمعاملات افتراضية:</h2>`);
+            appendOutput('functionTypeOutput', `دالة 'greet("جون")': <strong>${greet("جون")}</strong>`);
+            appendOutput('functionTypeOutput', `دالة 'greet()': <strong>${greet()}</strong>`);
+        }
+
+        // --- Task 6: Local vs Global Scope and Variable Hoisting ---
+        var globalVar = "أنا متغير عام."; // متغير عام
+
+        function performScopeHoistingTasks() {
+            clearOutput('scopeHoistingOutput');
+
+            appendOutput('scopeHoistingOutput', `<h2>النطاق المحلي مقابل النطاق العام:</h2>`);
+            appendOutput('scopeHoistingOutput', `المتغير العام خارج الدالة: "${globalVar}"`);
+
+            function scopeExample() {
+                var globalVar = "أنا متغير محلي."; // هذا متغير محلي جديد
+                appendOutput('scopeHoistingOutput', `المتغير المحلي داخل الدالة: "${globalVar}"`);
+            }
+            scopeExample();
+            appendOutput('scopeHoistingOutput', `المتغير العام خارج الدالة بعد الاستدعاء: "${globalVar}"`);
+            appendOutput('scopeHoistingOutput', `<em>ملاحظة: الكلمة المفتاحية 'var' داخل الدالة تنشئ متغيرًا محليًا جديدًا، لذلك يظل المتغير العام دون تغيير.</em>`);
+
+            appendOutput('scopeHoistingOutput', `<h2>رفع المتغيرات (Hoisting):</h2>`);
+            appendOutput('scopeHoistingOutput', `تسجيل 'hoistedVar' قبل الإعلان (باستخدام var):`);
+            appendOutput('scopeHoistingOutput', `القيمة: <strong>${hoistedVar}</strong>`); // سيخرج undefined
+            var hoistedVar = "تم رفعي!"; // يتم رفع الإعلان، ويتم التعيين هنا
+            appendOutput('scopeHoistingOutput', `تسجيل 'hoistedVar' بعد الإعلان:`);
+            appendOutput('scopeHoistingOutput', `القيمة: <strong>${hoistedVar}</strong>`); // سيخرج "تم رفعي!"
+            appendOutput('scopeHoistingOutput', `<em>ملاحظة: يتم معالجة إعلانات 'var' قبل تنفيذ الكود، ولكن تعييناتها تظل في مكانها. هذا هو السبب في أن 'hoistedVar' يمكن الوصول إليه ولكنه 'undefined' قبل تعيينه.</em>`);
+        }
+
+        // --- Task 7: Calculate Hypotenuse with Nested Function ---
+        function calculateHypotenuseTasks() {
+            clearOutput('hypotenuseOutput');
+
+            function calculateHypotenuse(a, b) {
+                // دالة متداخلة لحساب التربيع
+                function square(x) {
+                    return x * x;
+                }
+                return Math.sqrt(square(a) + square(b));
+            }
+
+            appendOutput('hypotenuseOutput', `وتر المثلث (3, 4): <strong>${calculateHypotenuse(3, 4)}</strong>`);
+            appendOutput('hypotenuseOutput', `وتر المثلث (5, 12): <strong>${calculateHypotenuse(5, 12)}</strong>`);
+            appendOutput('hypotenuseOutput', `وتر المثلث (8, 15): <strong>${calculateHypotenuse(8, 15)}</strong>`);
+        }
+
+        // --- Task 8: sumAll() with arguments object ---
+        function performSumAllTasks() {
+            clearOutput('sumAllOutput');
+
+            function sumAll() {
+                let sum = 0;
+                for (let i = 0; i < arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                return sum;
+            }
+
+            appendOutput('sumAllOutput', `sumAll(1, 2, 3, 4): <strong>${sumAll(1, 2, 3, 4)}</strong>`);
+            appendOutput('sumAllOutput', `sumAll(10, 20): <strong>${sumAll(10, 20)}</strong>`);
+            appendOutput('sumAllOutput', `sumAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10): <strong>${sumAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}</strong>`);
+        }
+
+        // Initial calls to populate outputs on page load for some sections
+        document.addEventListener('DOMContentLoaded', () => {
+            performOperatorAndTypeofTasks();
+            performFunctionTypeTasks();
+            performScopeHoistingTasks();
+            calculateHypotenuseTasks();
+            performSumAllTasks();
+        });
+    </script>
+
+</body>
+</html>

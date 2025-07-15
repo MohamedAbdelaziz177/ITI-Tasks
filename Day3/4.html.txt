@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4: + Operator & typeof</title>
+</head>
+<body>
+
+    <h1>Task 4: + Operator & typeof</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        // 4a. Add two numbers
+        output += "<h2>+ Operator Experiment:</h2>";
+        const num1 = 10;
+        const num2 = 5;
+        const sum = num1 + num2;
+        output += `<p>Adding two numbers (${num1} + ${num2}): ${sum}</p>`;
+
+        // 4b. Concatenate two strings
+        const str1 = "Hello, ";
+        const str2 = "World!";
+        const concatenatedString = str1 + str2;
+        output += `<p>Concatenating two strings ("${str1}" + "${str2}"): ${concatenatedString}</p>`;
+
+        // 4c. Add a number and a string, and observe the result
+        const num3 = 100;
+        const str3 = " dollars";
+        const mixedResult = num3 + str3; // Number is converted to string, then concatenated
+        output += `<p>Adding a number and a string (${num3} + "${str3}"): ${mixedResult}</p>`;
+
+        const mixedResult2 = "The value is " + 50; // String concatenation
+        output += `<p>Adding a string and a number ("The value is " + 50): ${mixedResult2}</p>`;
+
+        // 4d. Use typeof to display the type of various variables
+        output += "<h2>typeof Operator:</h2>";
+
+        const aNumber = 123;
+        const aString = "JavaScript";
+        const aBoolean = true;
+        const anObject = { key: "value" };
+        const anArray = [1, 2, 3];
+        const aFunction = function() {};
+        const aNull = null; // typeof null is "object" (a historical bug in JS)
+        let anUndefined;
+
+        output += `<p>Type of ${aNumber} (number): ${typeof aNumber}</p>`;
+        output += `<p>Type of "${aString}" (string): ${typeof aString}</p>`;
+        output += `<p>Type of ${aBoolean} (boolean): ${typeof aBoolean}</p>`;
+        output += `<p>Type of { key: "value" } (object): ${typeof anObject}</p>`;
+        output += `<p>Type of [1, 2, 3] (array): ${typeof anArray}</p>`; // Arrays are objects
+        output += `<p>Type of function() {} (function): ${typeof aFunction}</p>`;
+        output += `<p>Type of null: ${typeof aNull}</p>`;
+        output += `<p>Type of undefined: ${typeof anUndefined}</p>`;
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

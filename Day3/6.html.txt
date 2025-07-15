@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6: Scope & Hoisting</title>
+</head>
+<body>
+
+    <h1>Task 6: Local vs Global Scope and Variable Hoisting</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        // 6a. Local vs global scope
+        output += "<h2>Local vs Global Scope:</h2>";
+
+        // Global variable declaration
+        var globalVar = "I am global (outside function)";
+        output += `<p>Global variable value BEFORE function call: ${globalVar}</p>`;
+
+        /**
+         * Demonstrates local vs global scope.
+         * Declares a local variable with the same name as a global one.
+         */
+        function scopeExample() {
+            // Local variable declaration (shadows the global one inside this function)
+            var globalVar = "I am local (inside function)";
+            output += `<p>Global variable value INSIDE function: ${globalVar}</p>`;
+        }
+
+        scopeExample(); // Call the function
+
+        output += `<p>Global variable value AFTER function call: ${globalVar}</p>`;
+        // The globalVar outside the function remains unchanged because the 'var' inside
+        // the function created a new local variable.
+
+        // 6b. Variable hoisting (with var)
+        output += "<h2>Variable Hoisting (with 'var'):</h2>";
+
+        // When using 'var', the declaration is hoisted to the top of its scope,
+        // but the assignment stays in place. So, 'hoistedVar' exists but is undefined here.
+        output += `<p>Logging 'hoistedVar' before declaration:</p>`;
+        output += `<p>Value: ${hoistedVar}</p>`; // This will output 'undefined'
+
+        var hoistedVar = "I am hoisted!"; // Declaration is hoisted, assignment happens here
+
+        output += `<p>Logging 'hoistedVar' after declaration:</p>`;
+        output += `<p>Value: ${hoistedVar}</p>`; // This will output "I am hoisted!"
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

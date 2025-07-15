@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7: Hypotenuse with Nested Function</title>
+</head>
+<body>
+
+    <h1>Task 7: Calculate Hypotenuse with Nested Function</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        /**
+         * Calculates the hypotenuse of a right-angled triangle given its two sides.
+         * Uses a nested function 'square' to compute squares.
+         * @param {number} a - The length of the first side.
+         * @param {number} b - The length of the second side.
+         * @returns {number} The length of the hypotenuse.
+         */
+        function calculateHypotenuse(a, b) {
+            /**
+             * Nested function: Computes the square of a number.
+             * @param {number} x - The number to square.
+             * @returns {number} The square of x.
+             */
+            function square(x) {
+                return x * x;
+            }
+
+            // Calculate hypotenuse using the Pythagorean theorem: c = sqrt(a^2 + b^2)
+            const hypotenuse = Math.sqrt(square(a) + square(b));
+            return hypotenuse;
+        }
+
+        // Test cases
+        const h1 = calculateHypotenuse(3, 4); // Expected: 5
+        const h2 = calculateHypotenuse(5, 12); // Expected: 13
+        const h3 = calculateHypotenuse(7, 24); // Expected: 25
+
+        output += `<p>Hypotenuse for sides 3 and 4: ${h1}</p>`;
+        output += `<p>Hypotenuse for sides 5 and 12: ${h2}</p>`;
+        output += `<p>Hypotenuse for sides 7 and 24: ${h3}</p>`;
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

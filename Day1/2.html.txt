@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+<form>
+  <p>Full Name<br>
+  <input type="text" placeholder="Enter your name"></p>
+
+  <p>User Name<br>
+  <input type="text" placeholder="Enter your username"></p>
+
+  <p>Email<br>
+  <input type="email" placeholder="Enter your email"></p>
+
+  <p>Phone num.<br>
+  <input type="tel" placeholder="Enter your phone num."></p>
+
+  <p>Password<br>
+  <input type="password" placeholder="Enter your password"></p>
+
+  <p>Confirm password<br>
+  <input type="password" placeholder="Enter your password"></p>
+
+  <p>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+  </p>
+
+  <button type="submit">submit</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5: Function Types</title>
+</head>
+<body>
+
+    <h1>Task 5: Function Types and Default Parameters</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        // 5a. A named function that takes two numbers and returns their sum.
+        /**
+         * Adds two numbers.
+         * @param {number} a - The first number.
+         * @param {number} b - The second number.
+         * @returns {number} The sum of a and b.
+         */
+        function addNumbers(a, b) {
+            return a + b;
+        }
+
+        const sumResult = addNumbers(15, 7);
+        output += `<h2>Named Function:</h2>`;
+        output += `<p>Sum of 15 and 7: ${sumResult}</p>`;
+
+        // 5b. An anonymous function assigned to a variable that multiplies two numbers.
+        /**
+         * Multiplies two numbers. This is an anonymous function assigned to a variable.
+         * @param {number} a - The first number.
+         * @param {number} b - The second number.
+         * @returns {number} The product of a and b.
+         */
+        const multiplyNumbers = function(a, b) {
+            return a * b;
+        };
+
+        const productResult = multiplyNumbers(8, 4);
+        output += `<h2>Anonymous Function:</h2>`;
+        output += `<p>Product of 8 and 4: ${productResult}</p>`;
+
+        // 5c. A function with default parameters (e.g., a greeting function with a default name of “Guest”).
+        /**
+         * Greets a person by name. If no name is provided, it defaults to "Guest".
+         * @param {string} [name="Guest"] - The name of the person to greet.
+         * @returns {string} The greeting message.
+         */
+        function greet(name = "Guest") {
+            return "Hello, " + name + "!";
+        }
+
+        output += `<h2>Function with Default Parameters:</h2>`;
+        output += `<p>Greeting with name "Alice": ${greet("Alice")}</p>`;
+        output += `<p>Greeting without a name (default): ${greet()}</p>`;
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8: sumAll() with arguments object</title>
+</head>
+<body>
+
+    <h1>Task 8: sumAll() with arguments object</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        /**
+         * Sums all numeric arguments passed to the function using the 'arguments' object.
+         * @returns {number} The sum of all arguments.
+         */
+        function sumAll() {
+            let totalSum = 0;
+            // The 'arguments' object is an array-like object corresponding to the arguments
+            // passed to a function.
+            for (let i = 0; i < arguments.length; i++) {
+                // Ensure the argument is a number before adding
+                if (typeof arguments[i] === 'number') {
+                    totalSum += arguments[i];
+                } else {
+                    console.warn(`Non-numeric argument ignored: ${arguments[i]}`);
+                }
+            }
+            return totalSum;
+        }
+
+        // Test cases
+        const sum1 = sumAll(1, 2, 3, 4);
+        const sum2 = sumAll(10, 20);
+        const sum3 = sumAll(1, 2, 3, "hello", 4); // Test with a non-numeric argument
+
+        output += `<p>sumAll(1, 2, 3, 4): ${sum1}</p>`;
+        output += `<p>sumAll(10, 20): ${sum2}</p>`;
+        output += `<p>sumAll(1, 2, 3, "hello", 4): ${sum3} (Check console for warning)</p>`;
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+document.getElementById('externalContent').innerHTML = "This is from an external file.";

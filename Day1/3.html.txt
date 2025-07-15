@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact and Download Links</title>
+</head>
+<body>
+
+<table border="1">
+  <tr>
+    <td>Send Message &#9993;&#65039;</td>
+    <td><a href="#">link for send message</a></td>
+  </tr>
+  <tr>
+    <td>Make Call &#128222;</td>
+    <td><a href="#">link for Making Call</a></td>
+  </tr>
+  <tr>
+    <td>Open WhattsApp</td>
+    <td><a href="#">link for send message on whatts App</a></td>
+  </tr>
+  <tr>
+    <td>Download &#128229;</td>
+    <td><a href="#">link to download document</a></td>
+  </tr>
+</table>
+
+</body>
+</html>

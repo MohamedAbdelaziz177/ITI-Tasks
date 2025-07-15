@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example of Font Tag in HTML</title>
+</head>
+<body>
+
+<h1>Example of Font Tag in HTML</h1>
+
+<p>General text without any font tag attribute value</p>
+<p><font color="orange">text having normal font size and font face. Only changing font color</font></p>
+<p><font face="Verdana">text having different font face</font></p>
+<p><font size="+2">text with increased font size having default font type</font></p>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1: JavaScript Basics</title>
+    <!-- 1b. Link to an external JavaScript file -->
+    <script src="external_script.js"></script>
+</head>
+<body>
+
+    <h1>Task 1: JavaScript Basics</h1>
+
+    <p>This page demonstrates basic JavaScript functionalities.</p>
+
+    <!-- 1c. Button with an onclick event -->
+    <button onclick="showAlert()">Click Me</button>
+
+    <p>Content below this line is from an external JavaScript file:</p>
+    <div id="externalContent"></div>
+
+    <script>
+        // 1a. An inline JavaScript alert
+        alert("Welcome to JavaScript");
+
+        // Function for the button's onclick event
+        function showAlert() {
+            alert("Button was clicked!");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Radio Button Tasks</h2>
+
+    <label><input type="radio" name="gender" value="Male" onclick="displayGender()"> Male</label>
+    <label><input type="radio" name="gender" value="Female" onclick="displayGender()"> Female</label>
+    <label><input type="radio" name="gender" value="Other" onclick="displayGender()"> Other</label>
+
+    <p id="genderDisplay"></p>
+
+    <button onclick="{
+        const radios = document.getElementsByName('gender');
+        let selected = Array.from(radios).find(r => r.checked);
+        alert('Selected: ' + (selected ? selected.value : 'None'));
+    }">Show Selected Radio</button>
+
+    <script>
+        function displayGender() {
+            const selected = document.querySelector('input[name="gender"]:checked');
+            document.getElementById("genderDisplay").innerText = "Selected Gender: " + selected.value;
+        }
+    </script>
+</body>
+</html>

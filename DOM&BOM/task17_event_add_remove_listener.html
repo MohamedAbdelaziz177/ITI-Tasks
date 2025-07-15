@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="toggleBtn">Toggle Event</button>
+    <script>
+        let toggle = false;
+        const btn = document.getElementById("toggleBtn");
+
+        function handler() {
+            alert("Button Clicked!");
+        }
+
+        btn.addEventListener("click", function toggleHandler() {
+            if (!toggle) {
+                btn.addEventListener("click", handler);
+                btn.innerText = "Remove Click Event";
+            } else {
+                btn.removeEventListener("click", handler);
+                btn.innerText = "Toggle Event";
+            }
+            toggle = !toggle;
+        }, { once: true });
+    </script>
+</body>
+</html>

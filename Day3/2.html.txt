@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Vowel Counter</title>
+</head>
+<body>
+
+    <h1>Task 2: Vowel Counter</h1>
+
+    <p>This page demonstrates a JavaScript function to count vowels in a string.</p>
+
+    <div id="results"></div>
+
+    <script>
+        /**
+         * Counts the number of vowels (a, e, i, o, u) in a given string.
+         * The check is case-insensitive.
+         * @param {string} str - The input string.
+         * @returns {number} The count of vowels in the string.
+         */
+        function countVowels(str) {
+            // Convert the string to lowercase to handle both cases
+            const lowerStr = str.toLowerCase();
+            let vowelCount = 0;
+            const vowels = "aeiou";
+
+            // Iterate through each character of the string
+            for (let i = 0; i < lowerStr.length; i++) {
+                // Check if the current character is present in the 'vowels' string
+                if (vowels.includes(lowerStr[i])) {
+                    vowelCount++;
+                }
+            }
+            return vowelCount;
+        }
+
+        // Test cases
+        const sentences = [
+            "Hello World",
+            "Programming is fun",
+            "JavaScript",
+            "Rhythm",
+            "AEIOUaeiou"
+        ];
+
+        const resultsDiv = document.getElementById('results');
+        let output = "<h2>Vowel Count Results:</h2>";
+
+        // Test the function with different sentences and display results
+        sentences.forEach(sentence => {
+            const count = countVowels(sentence);
+            output += `<p>Sentence: "${sentence}" - Vowel Count: ${count}</p>`;
+        });
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <ul id="list"><li>Item 1</li></ul>
+    <button onclick="{
+        let li = document.createElement('li');
+        li.innerText = 'New Item';
+        document.getElementById('list').appendChild(li);
+    }">Add List Item</button>
+</body>
+</html>

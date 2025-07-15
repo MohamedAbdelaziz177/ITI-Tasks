@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Statements & Eval</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        .container { max-width: 900px; margin: 20px auto; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #ffffff; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-top: 30px; }
+        h1 { text-align: center; color: #2980b9; }
+        .task-section { margin-bottom: 25px; padding: 15px; background-color: #ecf0f1; border-radius: 8px; border: 1px solid #dcdcdc; }
+        .output { background-color: #e8f4f8; border-left: 5px solid #3498db; padding: 10px 15px; margin-top: 15px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; }
+        button { background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; margin-top: 10px; }
+        button:hover { background-color: #2980b9; }
+        input[type="number"], input[type="text"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 70%; margin-right: 10px; }
+        .warning { color: #e74c3c; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>مهام JavaScript: الشروط ودالة eval()</h1>
+
+        <!-- Task 1: Conditional Statements Practice -->
+        <div class="task-section">
+            <h2>1. مهام جمل الشروط</h2>
+
+            <h3>1.1 مصنف العمر</h3>
+            <p>أدخل العمر لتصنيفه:</p>
+            <input type="number" id="ageInput" value="25" min="0">
+            <button onclick="classifyAge()">صنف العمر</button>
+            <div id="ageOutput" class="output"></div>
+
+            <h3>1.2 اسم اليوم (باستخدام Switch Statement)</h3>
+            <p>أدخل رقمًا (1-7) للحصول على اسم اليوم:</p>
+            <input type="number" id="dayInput" value="3" min="1" max="7">
+            <button onclick="getWeekdayName()">احصل على اليوم</button>
+            <div id="weekdayOutput" class="output"></div>
+
+            <h3>1.3 فردي أو زوجي (باستخدام Ternary Operator)</h3>
+            <p>أدخل رقمًا للتحقق مما إذا كان فرديًا أو زوجيًا:</p>
+            <input type="number" id="oddEvenInput" value="7">
+            <button onclick="checkOddEvenNumber()">تحقق</button>
+            <div id="oddEvenOutput" class="output"></div>
+        </div>
+
+        <!-- Task 2: Using eval() Safely -->
+        <div class="task-section">
+            <h2>2. استخدام eval() بأمان (تحذير!)</h2>
+            <p>أنشئ آلة حاسبة بسيطة:</p>
+            <input type="text" id="expressionInput" value="5 + 10 * 2" placeholder="أدخل تعبيرًا حسابيًا">
+            <button onclick="calculateExpression()">احسب</button>
+            <div id="calculatorOutput" class="output"></div>
+            <p class="warning">
+                <strong>تحذير:</strong> استخدام `eval()` يمكن أن يشكل خطرًا أمنيًا إذا لم يكن المدخل موثوقًا به.
+                فهو ينفذ كود JavaScript عشوائيًا. استخدمه بحذر شديد في التطبيقات الحقيقية.
+            </p>
+        </div>
+
+    </div> <!-- End of container -->
+
+    <script>
+        // Helper function to append output to a div
+        function appendOutput(elementId, content) {
+            const outputDiv = document.getElementById(elementId);
+            outputDiv.innerHTML += content + "<br>";
+        }
+
+        // Clear output before running new tasks
+        function clearOutput(elementId) {
+            document.getElementById(elementId).innerHTML = "";
+        }
+
+        // --- Task 1.1: Age Classifier ---
+        function classifyAge() {
+            clearOutput('ageOutput');
+            const age = parseInt(document.getElementById('ageInput').value);
+
+            if (isNaN(age) || age < 0) {
+                appendOutput('ageOutput', "الرجاء إدخال عمر صحيح وموجب.");
+                return;
+            }
+
+            if (age < 12) {
+                appendOutput('ageOutput', `العمر ${age}: <strong>طفل</strong>`);
+            } else if (age >= 12 && age < 18) {
+                appendOutput('ageOutput', `العمر ${age}: <strong>مراهق</strong>`);
+            } else if (age >= 18 && age < 60) {
+                appendOutput('ageOutput', `العمر ${age}: <strong>بالغ</strong>`);
+            } else { // age >= 60
+                appendOutput('ageOutput', `العمر ${age}: <strong>كبير في السن</strong>`);
+            }
+        }
+
+        // --- Task 1.2: Weekday Name (Switch Statement) ---
+        function getWeekdayName() {
+            clearOutput('weekdayOutput');
+            const dayNumber = parseInt(document.getElementById('dayInput').value);
+
+            if (isNaN(dayNumber) || dayNumber < 1 || dayNumber > 7) {
+                appendOutput('weekdayOutput', "الرجاء إدخال رقم بين 1 و 7.");
+                return;
+            }
+
+            let weekday;
+            switch (dayNumber) {
+                case 1:
+                    weekday = "الأحد";
+                    break;
+                case 2:
+                    weekday = "الاثنين";
+                    break;
+                case 3:
+                    weekday = "الثلاثاء";
+                    break;
+                case 4:
+                    weekday = "الأربعاء";
+                    break;
+                case 5:
+                    weekday = "الخميس";
+                    break;
+                case 6:
+                    weekday = "الجمعة";
+                    break;
+                case 7:
+                    weekday = "السبت";
+                    break;
+                default:
+                    weekday = "يوم غير صالح"; // Should not be reached due to input validation
+            }
+            appendOutput('weekdayOutput', `اليوم رقم ${dayNumber}: <strong>${weekday}</strong>`);
+        }
+
+        // --- Task 1.3: Odd or Even (Ternary Operator) ---
+        function checkOddEvenNumber() {
+            clearOutput('oddEvenOutput');
+            const number = parseInt(document.getElementById('oddEvenInput').value);
+
+            if (isNaN(number)) {
+                appendOutput('oddEvenOutput', "الرجاء إدخال رقم صحيح.");
+                return;
+            }
+
+            const result = (number % 2 === 0) ? "زوجي" : "فردي";
+            appendOutput('oddEvenOutput', `الرقم ${number} هو: <strong>${result}</strong>`);
+        }
+
+        // --- Task 2.1: Simple Calculator with eval() ---
+        function calculateExpression() {
+            clearOutput('calculatorOutput');
+            const expression = document.getElementById('expressionInput').value;
+            try {
+                // WARNING: eval() is dangerous with untrusted input.
+                // This is for demonstration purposes only as requested.
+                const result = eval(expression);
+                appendOutput('calculatorOutput', `التعبير: "${expression}"`);
+                appendOutput('calculatorOutput', `النتيجة: <strong>${result}</strong>`);
+            } catch (e) {
+                appendOutput('calculatorOutput', `خطأ في التعبير: ${e.message}`);
+            }
+        }
+    </script>
+
+</body>
+</html>

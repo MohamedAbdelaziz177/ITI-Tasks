@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3: Number Conversion & Properties</title>
+</head>
+<body>
+
+    <h1>Task 3: Number Conversion & Properties</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        let output = "";
+
+        // 3a. Convert a numeric string to a number using Number(), parseInt(), and parseFloat()
+        output += "<h2>Numeric String Conversion:</h2>";
+        const numericString = "123.45";
+        const nonNumericString = "123abc";
+        const floatString = "123.45px";
+
+        output += `<p>Original String: "${numericString}"</p>`;
+        output += `<p>Number("${numericString}"): ${Number(numericString)} (Type: ${typeof Number(numericString)})</p>`;
+        output += `<p>parseInt("${numericString}"): ${parseInt(numericString)} (Type: ${typeof parseInt(numericString)})</p>`;
+        output += `<p>parseFloat("${numericString}"): ${parseFloat(numericString)} (Type: ${typeof parseFloat(numericString)})</p>`;
+
+        output += `<p>Original String: "${nonNumericString}"</p>`;
+        output += `<p>Number("${nonNumericString}"): ${Number(nonNumericString)} (Type: ${typeof Number(nonNumericString)})</p>`;
+        output += `<p>parseInt("${nonNumericString}"): ${parseInt(nonNumericString)} (Type: ${typeof parseInt(nonNumericString)})</p>`;
+        output += `<p>parseFloat("${nonNumericString}"): ${parseFloat(nonNumericString)} (Type: ${typeof parseFloat(nonNumericString)})</p>`;
+
+        output += `<p>Original String: "${floatString}"</p>`;
+        output += `<p>Number("${floatString}"): ${Number(floatString)} (Type: ${typeof Number(floatString)})</p>`;
+        output += `<p>parseInt("${floatString}"): ${parseInt(floatString)} (Type: ${typeof parseInt(floatString)})</p>`;
+        output += `<p>parseFloat("${floatString}"): ${parseFloat(floatString)} (Type: ${typeof parseFloat(floatString)})</p>`;
+
+
+        // 3b. Use Number.isNaN() and Number.isFinite()
+        output += "<h2>Number.isNaN() and Number.isFinite():</h2>";
+
+        // Test Number.isNaN()
+        output += "<h3>Number.isNaN():</h3>";
+        output += `<p>Number.isNaN(NaN): ${Number.isNaN(NaN)}</p>`;
+        output += `<p>Number.isNaN(0 / 0): ${Number.isNaN(0 / 0)}</p>`;
+        output += `<p>Number.isNaN(undefined): ${Number.isNaN(undefined)}</p>`; // false, as undefined is not NaN
+        output += `<p>Number.isNaN("Hello"): ${Number.isNaN("Hello")}</p>`;     // false, as "Hello" is not NaN
+        output += `<p>Number.isNaN(123): ${Number.isNaN(123)}</p>`;             // false
+
+        // Test Number.isFinite()
+        output += "<h3>Number.isFinite():</h3>";
+        output += `<p>Number.isFinite(Infinity): ${Number.isFinite(Infinity)}</p>`;
+        output += `<p>Number.isFinite(-Infinity): ${Number.isFinite(-Infinity)}</p>`;
+        output += `<p>Number.isFinite(10): ${Number.isFinite(10)}</p>`;
+        output += `<p>Number.isFinite(NaN): ${Number.isFinite(NaN)}</p>`;
+        output += `<p>Number.isFinite(null): ${Number.isFinite(null)}</p>`; // false, as null is not a finite number
+        output += `<p>Number.isFinite("123"): ${Number.isFinite("123")}</p>`; // false, as "123" is not a number type
+
+        // 3c. Print out Number.MAX_VALUE, Number.MIN_VALUE, and Number.EPSILON
+        output += "<h2>Special Number Values:</h2>";
+        output += `<p>Number.MAX_VALUE: ${Number.MAX_VALUE}</p>`;
+        output += `<p>Number.MIN_VALUE: ${Number.MIN_VALUE}</p>`;
+        output += `<p>Number.EPSILON: ${Number.EPSILON}</p>`;
+
+        resultsDiv.innerHTML = output;
+    </script>
+
+</body>
+</html>

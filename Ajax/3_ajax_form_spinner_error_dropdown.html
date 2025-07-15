@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>AJAX POST Form & Spinner & Error & Dropdown</h2>
+
+    <form onsubmit="submitForm(event)">
+        <input name="name" placeholder="Name" required>
+        <input name="email" placeholder="Email" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="formResponse"></div>
+
+    <hr>
+    <button onclick="fetchWithSpinner()">Fetch With Spinner</button>
+    <div id="spinnerResult"></div>
+
+    <hr>
+    <button onclick="fetchInvalid()">Fetch Invalid URL</button>
+    <div id="errorResult"></div>
+
+    <hr>
+    <select id="userDropdown"><option disabled selected>-- Select User --</option></select>
+    <button onclick="populateDropdown()">Load Users in Dropdown</button>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const formData = {
+                name: event.target.name.value,
+                email: event.target.email.value
+            };
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(res => res.json())
+              .then(data => {
+                  document.getElementById('formResponse').innerText = JSON.stringify(data, null, 2);
+              });
+        }
+
+        function fetchWithSpinner() {
+            const div = document.getElementById('spinnerResult');
+            div.innerHTML = "Loading...";
+            fetch('https://jsonplaceholder.typicode.com/posts/1')
+                .then(res => res.json())
+                .then(data => {
+                    div.innerHTML = `<strong>${data.title}</strong><p>${data.body}</p>`;
+                });
+        }
+
+        function fetchInvalid() {
+            fetch('https://jsonplaceholder.typicode.com/invalid-url')
+                .then(res => {
+                    if (!res.ok) throw new Error("Request failed");
+                    return res.json();
+                })
+                .catch(err => {
+                    document.getElementById('errorResult').innerText = "Error: " + err.message;
+                });
+        }
+
+        function populateDropdown() {
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(res => res.json())
+                .then(users => {
+                    const dropdown = document.getElementById('userDropdown');
+                    users.forEach(user => {
+                        const option = new Option(user.name, user.id);
+                        dropdown.add(option);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>

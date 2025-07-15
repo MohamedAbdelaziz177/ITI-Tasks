@@ -1,0 +1,12 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="clock">Time: </div>
+    <script>
+        setInterval(() => {
+            document.getElementById('clock').innerText = "Time: " + new Date().toLocaleTimeString();
+        }, 1000);
+    </script>
+</body>
+</html>
